@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-6" *ngFor="let question of questions;let qi = index">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        {{question.statement}}
+      </div>
+      <div class="panel-body">
+        <label>
+          <input type="radio" value="1" name="option{{qi}}" [(ngModel)]="question.useroption"/> {{question.option1}}
+        </label>
+        <br />
+        <label>
+          <input type="radio" value="2" name="option{{qi}}" [(ngModel)]="question.useroption"/> {{question.option2}}
+        </label>
+        <br />
+        <label>
+          <input type="radio" value="3" name="option{{qi}}" [(ngModel)]="question.useroption"/> {{question.option3}}
+        </label>
+        <br />
+        <label>
+          <input type="radio" value="4" name="option{{qi}}" [(ngModel)]="question.useroption"/> {{question.option4}}
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <button (click)="finish()">Finish</button>
+  </div>
+</div>
+
+<modal-dialog-component #md [title]="'Test Over'" [message]="result">
+   <button type="button" (click)="delete()" class="btn btn-danger" data-dismiss="modal">Ok</button>
+  <button type="button" (click)="cancel()" class="btn btn-default" data-dismiss="modal">Cancel</button>
+</modal-dialog-component>

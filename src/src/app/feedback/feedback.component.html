@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-6" *ngFor="let question of questions">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        {{question.statement}}
+      </div>
+      <div class="panel-body">
+        <div *ngFor="let option of question.options" class="form-group">
+          <label>
+            <input type="checkbox" [(ngModel)]="option.isSelected"/> {{option.text}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+      <button (click)="submit()">Submit</button>
+    </div>
+</div>
+
+<modal-dialog-component #md [title]="'Test Over'" [message]="result">
+    <button type="button" (click)="delete()" class="btn btn-danger" data-dismiss="modal">Ok</button>
+   <button type="button" (click)="cancel()" class="btn btn-default" data-dismiss="modal">Cancel</button>
+ </modal-dialog-component>
