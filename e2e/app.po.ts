@@ -1,11 +1,13 @@
 import { browser, by, element } from 'protractor';
 
-export class AngularTemplatePage {
+
+
+export class AppPage {
   navigateTo() {
-    return browser.get('/');
+    return browser.get('/planning');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getpatientName() {
+    return element(by.className('patientName')).getText();
   }
 }

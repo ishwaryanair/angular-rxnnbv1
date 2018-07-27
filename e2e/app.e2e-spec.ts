@@ -1,14 +1,20 @@
-import { AngularTemplatePage } from './app.po';
+import { AppPage } from './app.po';
+import { browser, element, by } from 'protractor';
 
-describe('angular-template App', () => {
-  let page: AngularTemplatePage;
+describe('scan-and-go-web-client App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new AngularTemplatePage();
+    browser.ignoreSynchronisation = true;
+    browser.waitForAngularEnabled(false);
+    browser.get('/planning');
+    element(by.id('nlsConfig_submit')).click();
+    browser.waitForAngularEnabled(true);
+    browser.ignoreSynchronisation = false;
+    page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+  it('should display patient name', () => {  
+    expect(page.getpatientName()).toEqual('Str_m_S16_F==');
   });
 });
